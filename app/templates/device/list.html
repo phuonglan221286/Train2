@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Device List</title>
+</head>
+<body>
+    <h1>List of Devices</h1>
+    <ul>
+        {% for device in devices %}
+        <li><a href="/devices/{{ device.id }}">{{ device.name }}</a> - {{ device.type }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
