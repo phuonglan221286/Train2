@@ -1,9 +1,12 @@
 from flask import Flask
-
+from .user.models import db
 def create_app():
     app = Flask(__name__)
     app.config.from_object('config.Config')  # Sử dụng cấu hình nếu có
-
+    
+    db.init_app(app)  # Khởi tạo SQLAlchemy
+    with app.app_context():
+        db.create_all()  # Tạo bảng nếu chưa tồn tại
     # Import và đăng ký các Blueprint
     from .routes import main_bp
     from .user import user_bp
